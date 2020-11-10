@@ -59,7 +59,7 @@
       return [requirement.strip() from requirement in open('requirements.txt').readlines()]
     
     setup(
-    	name="appname",
+      name="appname",
       description="Description of the app name",
       version="0.1.0", # semantic versioning: major.minor.patch
       packages=find_packages(), # looks for packages/modules to install
