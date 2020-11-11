@@ -1,7 +1,5 @@
 # JAVA
 
-- [Spring](spring.md) 
+- [SDKMan](sdkman.md)
 
-- Java8
-- 
 
