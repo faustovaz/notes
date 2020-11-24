@@ -2,6 +2,7 @@
 
 - [Modes](#modes)
 - [Conditionals](#conditionals)
+- [Arrays](#arrays)
 - [Loops](#loops)
 
 
@@ -32,14 +33,40 @@ Before, note that `[[ ]]` is a bash command that returns 0 (true) or 1 (false) (
 
 ##### Strings
 
-| Condition               | Description      |
-| ----------------------- | ---------------- |
-| `[[ -z STRING ]]`       | Empty string     |
-| `[[ -n STRING ]]`       | Not empty string |
-| `[[ STRING == STRING]]` | Equal            |
-| `[[ STRING != STRING]]` | Not equal        |
+| Condition                | Description      |
+| ------------------------ | ---------------- |
+| `[[ -z STRING ]]`        | Empty string     |
+| `[[ -n STRING ]]`        | Not empty string |
+| `[[ STRING == STRING ]]` | Equal            |
+| `[[ STRING != STRING ]]` | Not equal        |
+| `[[ STRING=~ STRING ]]`  | Regex            |
 
 ##### Numbers
+
+| Condition           | Description           |
+| ------------------- | --------------------- |
+| `[[ NUM -eq NUM ]]` | Equal                 |
+| `[[ NUM -ne NUM ]]` | Not equal             |
+| `[[ NUM -lt NUM ]]` | Less than             |
+| `[[ NUM -le NUM ]]` | Less than or equal    |
+| `[[ NUM -gt NUM ]]` | Greater than          |
+| `[[ NUM -ge NUM ]]` | Greater than or equal |
+
+##### Files
+
+| Condition               | Description                                 |
+| ----------------------- | ------------------------------------------- |
+| `[[ -e FILE ]]`         | FILE exists?                                |
+| `[[ -r FILE ]]`         | Is FILE readable?                           |
+| `[[ -h FILE ]]`         | Is FILE a symlink?                          |
+| `[[ -d FILE ]]`         | Is FILE a directory?                        |
+| `[[ -w FILE ]]`         | Is FILE writable?                           |
+| `[[ -s FILE ]]`         | Is FILE not empty? (size of FILE > 0 bytes) |
+| `[[ -f FILE ]]`         | Is FILE  a file?                            |
+| `[[ -x FILE ]]`         | Is FILE executable?                         |
+| `[[ FILE1 -nt FILE2 ]]` | Is FILE1 more recent than FILE2?            |
+| `[[ FILE -ot FILE ]]`   | Is FILE2 more recent than FILE1?            |
+| `[[ FILE -ef FILE ]]`   | Same file                                   |
 
 
 
