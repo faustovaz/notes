@@ -4,6 +4,7 @@
 - [Conditionals](#conditionals)
 - [Arrays](#arrays)
 - [Loops](#loops)
+- [Tips](#tips)
 
 
 
@@ -70,11 +71,121 @@ Before, note that `[[ ]]` is a bash command that returns 0 (true) or 1 (false) (
 
 
 
+### Arrays
 
+| Bash command               | Description                                                  |
+| -------------------------- | ------------------------------------------------------------ |
+| `$ array=(opt1 opt2 opt3)` | Declaring an array (whie space separated)                    |
+| `${array[@]}`              | All elements of the array                                    |
+| `${#array[@]}`             | Number of elements                                           |
+| `${!array[@]}`             | Elements keys (in case of dictionaries) or indices (in case of arrays) |
+| `${array[0]}`              | Element 0                                                    |
+| `${array[-1]}`             | Last element                                                 |
+| `array=(${array[@]} opt4)` | Push                                                         |
+| `array+=(opt4)`            | Push                                                         |
+| `unset array[1]`           | Unset element 1                                              |
+
+##### Miscelaneous 
+
+| Command                  | Description                                     |
+| ------------------------ | ----------------------------------------------- |
+| `allfiles=($HOME/dir/*)` | Array of all file and dir names from $HOME/dir/ |
+| `alllines=($(cat file))` | Array of all lines from file                    |
 
 
 
 ### Loops 
 
-How to do loops in bash
+```bash
+array=(one two three)
+for element in ${array[@]}; do
+	echo $element
+done
+```
 
+
+
+```bash
+for file in $HOME/mydir/*; do
+	echo $file
+done
+```
+
+
+
+### Tips
+
+- Strict mode: 
+
+  ```bash
+  set -euo pipefail
+  IFS=$'\n\t'
+  ```
+
+- Conditional
+
+  ```bash
+  if [[ -z "$STRING" ]]; then
+  	echo "Empty string"
+  else
+  	echo "Not empty"
+  fi
+  ```
+
+  ```bash
+  if ping -c 1 google.com; then
+  	echo "Connected"
+  fi
+  ```
+
+  
+
+- Function
+
+  ```bash
+  my_function(){
+  	echo "Return this as a value"
+  }
+  
+  $ my_function
+  ```
+
+  Alternate syntax:
+
+  ```bash
+  function my_function(){
+  	echo "Return this as a value"
+  }
+  
+  $ my_function
+  ```
+
+  
+
+  Passing params to functions
+
+  ```bash
+  my_function(){
+  	echo "Parameters passed: $1"
+  }
+  
+  $ my_function "param"
+  ```
+
+
+
+- Always remember: In shell, return non-zero values considered false, zero value are considered true. Exemple:
+
+  ```bash
+  my_function(){
+  	return 1
+  }
+  
+  if my_function; then
+  	echo "This will not be printed"
+  else
+  	echo "This will be printed"
+  fi
+  ```
+
+  
