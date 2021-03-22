@@ -73,13 +73,15 @@
 
     It's a  good practice to have two requirements.txt files: one for production and another for dev environment. 
 
-    To run for dev env: `$ pip install -e . ['dev']`
+    To run for dev env: `$ pip install -e .['dev']`
 
-    To run for production: `$ pip install -e . ['prod']` or `$ pip install -e .`
+    To run for production: `$ pip install -e .['prod']` or `$ pip install -e .`
 
     To remove the app/package: `$ pip uninstall app_name`
 
     Another important thing to note is that function `find_packages` from setuptools looks for folders with a `__init__.py` file on it (python module).
+    
+    Hint: `-e` is for installing for editing mode 
 
 - **Flask course link** (by Codeshow): [https://skip.gg/apostila-flask-python-codeshow](https://skip.gg/apostila-flask-python-codeshow) 
 
