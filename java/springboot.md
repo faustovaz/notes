@@ -16,7 +16,29 @@ To execute the jar, do one of the following:
 - `$ java -jar -Dspring.profiles.active=dev myapp.jar`
 - `$ java -jar myapp.jar` (using default profile)
 
+### Using selfsigned certificate
 
+To generate a certificate using keytool:
+`$ keytool -genkeypair -keyalg RSA --keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 10 -storepass testing -alias aliastest`
+
+where
+     - `genkeypair`: what is to be done (in the example, generate a key pair using the given algorithm);
+     - `keyalg`: the chosen algorithm (RSA for example);
+     -` keysize`: the size of the key;
+     - `storetype`: the type of file which will be used as the certificate;
+     - `keystore`: the name of the file;
+     - `validity`: the number (in days) to expire the certificate;
+     - `storepass`: the password used 
+     - `alias`: alias
+
+Remember to use `localhost` for the first question (`What is your first and last name?`) if the plans are to use the selfsigned certificate at localhost.
+With the self signed certificate, we can use it to test https connections with our Spring boot app by copying the certificate file to the resources folder (src/main/resources) and referencing it in the application.properties file:
+`
+server.ssl.key-store=classpath:keystore.p12
+server.ssl.key-store-password=testing
+server.ssl.key-store-type=PKCS12
+server.ssl.key-alias=aliastest
+`
 
 
 
