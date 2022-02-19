@@ -19,8 +19,10 @@ To execute the jar, do one of the following:
 ### Using self-signed certificate
 
 To generate a certificate using keytool:
-`$ keytool -genkeypair -keyalg RSA --keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 10 -storepass testing -alias aliastest`
-
+```bash
+$ keytool -genkeypair -keyalg RSA --keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 10 
+-storepass testing -alias aliastest
+```
 where
      - `genkeypair`: what is to be done (in the example, generate a key pair using the given algorithm);
      - `keyalg`: the chosen algorithm (RSA for example);
