@@ -34,7 +34,10 @@ where
 Remember to use `localhost` for the first question (`What is your first and last name?`) if the plans are to use the selfsigned certificate at localhost.
 With the self signed certificate, we can use it to test https connections with our Spring boot app by copying the certificate file to the resources folder (`src/main/resources`) and referencing it in the application.properties file:
 
-`server.ssl.key-store=src/main/resources/keystore.p12`
-`server.ssl.key-store-password=testing`
-`server.ssl.key-store-type=PKCS12`
-`server.ssl.key-alias=aliastest`
+```java
+server.ssl.key-store=src/main/resources/keystore.p12
+server.ssl.key-store-password=testing
+server.ssl.key-store-type=PKCS12
+server.ssl.key-alias=aliastest
+
+```
